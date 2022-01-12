@@ -102,6 +102,11 @@ module SpecHelper
     system_raise_on_fail("#{MYSQL_CLI} < #{sql_file}")
   end
 
+  def restore_table_mysql_datetime_precision
+    sql_file = File.expand_path('mysql/ridgepole_test_table_datetime_precision.sql', __dir__)
+    system_raise_on_fail("#{MYSQL_CLI} < #{sql_file}")
+  end
+
   def client(options = {}, config = {})
     config = conn_spec(config)
     default_options = { debug: condition(:debug) }
